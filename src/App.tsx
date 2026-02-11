@@ -8,15 +8,17 @@ import './App.css'
 function App() {
   const [gameState, setGameState] = useState<'start' | 'playing' | 'result'>('start');
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [winner, setWinner] = useState<Option | null>(null);
   const [gameKey, setGameKey] = useState<number>(0);
 
   const handleCategorySelect = (category: string) => {
-      const options = getOptionsByCategory(category);
+    const options = getOptionsByCategory(category);
     if (options.length < 2) {
         alert('Not enough options in this category. Please select another.');
         return;
     }
+    setSelectedCategory(category);
     setSelectedOptions(getOptionsByCategory(category));
     setGameState('playing');
   };
@@ -30,6 +32,7 @@ function App() {
     setGameKey(prev => prev + 1);
   };
     const handleBack = () => {
+    setSelectedCategory('');
     setGameState('start');
     setSelectedOptions([]);
   };
@@ -37,14 +40,15 @@ function App() {
   const categories = getAllCategories();
 
   return (
-    <div className="min-h-[50vh] bg-gradient-to-br rounded-sm from-fuchsia-500 to-pink-500 p-8">
-      <h1 className="text-6xl font-bold text-white text-center mb-8">This Or That Pickr</h1>
+    <div className="min-h-[50vh] bg-gradient-to-br rounded-sm from-pink-400 to-rose-400 p-8">
+      <h1 className="text-6xl text-rose-900 text-center mb-8">This Or That Pickr</h1>
       {gameState === 'start' && <Start categories={categories} onCategorySelect={handleCategorySelect} />}
       {gameState === 'playing' && <Play         
                                     key={gameKey} 
                                     options={selectedOptions} 
                                     onWinnerSelected={handleWinnerSelected}
-                                    onBack={handleBack} />}
+                                    onBack={handleBack}
+                                    category={selectedCategory} />}
       {gameState === 'result' && <Result winner={winner} onRestart={handleRestart} />}
     </div>
   )

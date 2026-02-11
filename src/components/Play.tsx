@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react'
 import type { FunctionComponent } from 'react'
 import { type Option } from '../data';
 interface PlayProps {
-        options: Option[];
+    category: string;
+    options: Option[];
     onWinnerSelected: (winner: Option) => void;
     onBack: () => void;
 }
  
-const Play: FunctionComponent<PlayProps> = ({ options, onWinnerSelected, onBack }) => {
+const Play: FunctionComponent<PlayProps> = ({ category, options, onWinnerSelected, onBack }) => {
 const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
 
     const [optionOne, setOptionOne] = useState<Option | null>(null);
@@ -60,15 +61,16 @@ const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
 
     return (
         <div>
+            <h2 className="text-3xl text-white text-center mb-4">{category}</h2>
             <button
                 onClick={onBack}
-                className="mb-4 bg-white hover:bg-gray-100 text-fuchsia-600 font-semibold py-2 px-6 rounded-lg transition"
+                className="mb-4 bg-white hover:bg-gray-100 text-pink-600 font-semibold mb-8 py-3 px-8 rounded-sm transition"
             >
                 ← Back To Categories
             </button>
             <div className="flex gap-4 h-[60vh]">
                 <div 
-                    className="flex-1 flex flex-col justify-center items-center h-full rounded-lg bg-fuchsia-200 cursor-pointer hover:bg-fuchsia-300 overflow-hidden group transition-all"
+                    className="flex-1 flex flex-col justify-center items-center h-full rounded-sm bg-rose-100 cursor-pointer hover:bg-rose-200 overflow-hidden group transition-all"
                     onClick={() => handleChoice(optionOne)}
                 >
                     <img 
@@ -76,10 +78,10 @@ const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
                         alt={optionOne.name}
                         className="w-full h-3/4 object-cover group-hover:scale-105 transition-transform"
                     />
-                    <p className="text-3xl font-bold text-fuchsia-800 p-4">{optionOne.name}</p>
+                    <p className="text-3xl font-bold text-rose-700 pt-5">{optionOne.name}</p>
                 </div>
                 <div 
-                    className="flex-1 flex flex-col justify-center items-center h-full rounded-lg bg-pink-200 cursor-pointer hover:bg-pink-300 overflow-hidden group transition-all"
+                    className="flex-1 flex flex-col justify-center items-center h-full rounded-sm bg-pink-100 cursor-pointer hover:bg-pink-200 overflow-hidden group transition-all"
                     onClick={() => handleChoice(optionTwo)}
                 >
                     <img 
@@ -87,7 +89,7 @@ const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
                         alt={optionTwo.name}
                         className="w-full h-3/4 object-cover group-hover:scale-105 transition-transform"
                     />
-                    <p className="text-3xl font-bold text-pink-800 p-4">{optionTwo.name}</p>
+                    <p className="text-3xl font-bold text-pink-700 pt-5">{optionTwo.name}</p>
                 </div>
             </div>
         </div>
