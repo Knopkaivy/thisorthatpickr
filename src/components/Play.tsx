@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import type { FunctionComponent } from 'react'
-import { usStates, type Option } from '../data/states'
+import { type Option } from '../data';
 interface PlayProps {
+        options: Option[];
     onWinnerSelected: (winner: Option) => void;
+    onBack: () => void;
 }
  
-const Play: FunctionComponent<PlayProps> = ({ onWinnerSelected }: PlayProps) => {
-const [availableOptions, setAvailableOptions] = useState<Option[]>(usStates);
+const Play: FunctionComponent<PlayProps> = ({ options, onWinnerSelected, onBack }) => {
+const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
 
     const [optionOne, setOptionOne] = useState<Option | null>(null);
     const [optionTwo, setOptionTwo] = useState<Option | null>(null);
@@ -56,29 +58,37 @@ const [availableOptions, setAvailableOptions] = useState<Option[]>(usStates);
 
     if (!optionOne || !optionTwo) return null;
 
-    return ( 
-        <div className="flex gap-4 h-[60vh]">
-            <div 
-                className="flex-1 flex flex-col justify-center items-center h-full rounded-sm bg-fuchsia-200 cursor-pointer hover:bg-fuchsia-300 overflow-hidden group transition-all"
-                onClick={() => handleChoice(optionOne)}
+    return (
+        <div>
+            <button
+                onClick={onBack}
+                className="mb-4 bg-white hover:bg-gray-100 text-fuchsia-600 font-semibold py-2 px-6 rounded-lg transition"
             >
-                <img 
-                    src={optionOne.image} 
-                    alt={optionOne.name}
-                    className="w-full h-3/4 object-cover group-hover:scale-105 transition-transform"
-                />
-                <p className="text-3xl font-bold text-fuchsia-800 p-4">{optionOne.name}</p>
-            </div>
-            <div 
-                className="flex-1 flex flex-col justify-center items-center h-full rounded-sm bg-pink-200 cursor-pointer hover:bg-pink-300 overflow-hidden group transition-all"
-                onClick={() => handleChoice(optionTwo)}
-            >
-                <img 
-                    src={optionTwo.image} 
-                    alt={optionTwo.name}
-                    className="w-full h-3/4 object-cover group-hover:scale-105 transition-transform"
-                />
-                <p className="text-3xl font-bold text-pink-800 p-4">{optionTwo.name}</p>
+                ← Back To Categories
+            </button>
+            <div className="flex gap-4 h-[60vh]">
+                <div 
+                    className="flex-1 flex flex-col justify-center items-center h-full rounded-lg bg-fuchsia-200 cursor-pointer hover:bg-fuchsia-300 overflow-hidden group transition-all"
+                    onClick={() => handleChoice(optionOne)}
+                >
+                    <img 
+                        src={optionOne.image} 
+                        alt={optionOne.name}
+                        className="w-full h-3/4 object-cover group-hover:scale-105 transition-transform"
+                    />
+                    <p className="text-3xl font-bold text-fuchsia-800 p-4">{optionOne.name}</p>
+                </div>
+                <div 
+                    className="flex-1 flex flex-col justify-center items-center h-full rounded-lg bg-pink-200 cursor-pointer hover:bg-pink-300 overflow-hidden group transition-all"
+                    onClick={() => handleChoice(optionTwo)}
+                >
+                    <img 
+                        src={optionTwo.image} 
+                        alt={optionTwo.name}
+                        className="w-full h-3/4 object-cover group-hover:scale-105 transition-transform"
+                    />
+                    <p className="text-3xl font-bold text-pink-800 p-4">{optionTwo.name}</p>
+                </div>
             </div>
         </div>
     );
