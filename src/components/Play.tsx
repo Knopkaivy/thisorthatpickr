@@ -65,13 +65,15 @@ const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
             <button
                 onClick={onBack}
                 className="mb-4 bg-white hover:bg-gray-100 text-pink-600 font-semibold mb-8 py-3 px-8 rounded-sm transition"
+                data-testid="back-button"
             >
-                ← Back To Categories
+                Back To Categories
             </button>
             <div className="flex gap-4 h-[60vh]">
                 <div 
                     className="flex-1 flex flex-col justify-center items-center h-full rounded-sm bg-rose-100 cursor-pointer hover:bg-rose-200 overflow-hidden group transition-all"
                     onClick={() => handleChoice(optionOne)}
+                    data-testid="option-card"
                 >
                     <img 
                         src={optionOne.image} 

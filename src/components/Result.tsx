@@ -25,6 +25,7 @@ const Result: FunctionComponent<ResultProps> = ({ winner, onRestart }) => {
             <button 
                 onClick={onRestart}
                 className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold mt-4 py-4 px-6 rounded-sm transition"
+                data-testid="start-over-button"
             >
                 Start Over
             </button>
