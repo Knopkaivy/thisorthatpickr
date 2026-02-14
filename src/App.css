@@ -5,3 +5,9 @@
   text-align: center;
   width: 100%;
 }
+
+@media only screen and (max-width: 40rem) {
+  #root{
+    padding: 0;
+  }
+}

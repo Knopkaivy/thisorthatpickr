@@ -40,8 +40,8 @@ function App() {
   const categories = getAllCategories();
 
   return (
-    <div className="min-h-[50vh] bg-gradient-to-br rounded-sm from-pink-400 to-rose-400 p-8">
-      <h1 className="text-6xl text-rose-900 text-center mb-8">This Or That Pickr</h1>
+    <div className="h-screen md:h-auto md:min-h-[50vh] bg-gradient-to-br rounded-sm from-pink-400 to-rose-400 p-4 md:p-8 flex flex-col justify-center">
+      <h1 className="text-4xl md:text-6xl text-rose-900 text-center mb-4 md:mb-8">This Or That Pickr</h1>
       {gameState === 'start' && <Start categories={categories} onCategorySelect={handleCategorySelect} />}
       {gameState === 'playing' && <Play         
                                     key={gameKey} 

@@ -6,7 +6,7 @@ interface StartProps {
  
 const Start: FunctionComponent<StartProps> = ({ categories, onCategorySelect }) => {
     return ( 
-        <div className="bg-white rounded-sm shadow-lg p-8 max-w-2xl mx-auto">
+        <div className="bg-white rounded-sm shadow-lg p-4 md:p-8 max-w-2xl mx-auto">
             <p className="text-xl text-gray-700 mb-6 text-center">
                 Use our interactive picker to help you choose your next travel destination
             </p>
@@ -18,7 +18,7 @@ const Start: FunctionComponent<StartProps> = ({ categories, onCategorySelect }) 
                     <button
                         key={category}
                         onClick={() => onCategorySelect(category)}
-                        className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 px-6 rounded-sm transition text-lg"
+                        className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-4 px-4 md:px-6 rounded-sm transition text-lg"
                     >
                         {category}
                     </button>

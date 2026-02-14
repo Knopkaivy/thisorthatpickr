@@ -69,7 +69,7 @@ const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
             >
                 Back To Categories
             </button>
-            <div className="flex gap-4 h-[60vh]">
+            <div className="flex flex-col md:flex-row gap-6 h-[60vh]">
                 <div 
                     className="flex-1 flex flex-col justify-center items-center h-full rounded-sm bg-rose-100 cursor-pointer hover:bg-rose-200 overflow-hidden group transition-all"
                     onClick={() => handleChoice(optionOne)}
@@ -78,9 +78,9 @@ const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
                     <img 
                         src={optionOne.image} 
                         alt={optionOne.name}
-                        className="w-full h-3/4 object-cover group-hover:scale-105 transition-transform"
+                        className="w-full h-3/4 grow object-cover group-hover:scale-105 transition-transform"
                     />
-                    <p className="text-3xl font-bold text-rose-700 pt-5">{optionOne.name}</p>
+                    <p className="text-3xl md:font-bold text-rose-700 pt-1 pb-2 md:py-5">{optionOne.name}</p>
                 </div>
                 <div 
                     className="flex-1 flex flex-col justify-center items-center h-full rounded-sm bg-pink-100 cursor-pointer hover:bg-pink-200 overflow-hidden group transition-all"
@@ -89,9 +89,9 @@ const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
                     <img 
                         src={optionTwo.image} 
                         alt={optionTwo.name}
-                        className="w-full h-3/4 object-cover group-hover:scale-105 transition-transform"
+                        className="w-full h-3/4 grow object-cover group-hover:scale-105 transition-transform"
                     />
-                    <p className="text-3xl font-bold text-pink-700 pt-5">{optionTwo.name}</p>
+                    <p className="text-3xl md:font-bold text-pink-700 pt-1 pb-2 md:py-5">{optionTwo.name}</p>
                 </div>
             </div>
         </div>
