@@ -44,7 +44,6 @@ const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
     }, []);
     
     const handleChoice = (chosenOption: Option) => {
-        console.log( availableOptions);
         if (availableOptions.length === 0) {
             onWinnerSelected(chosenOption);
             return;
@@ -61,14 +60,21 @@ const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
 
     return (
         <div>
-            <h2 className="text-3xl text-white text-center mb-4">{category}</h2>
-            <button
-                onClick={onBack}
-                className="mb-4 bg-white hover:bg-gray-100 text-pink-600 font-semibold mb-8 py-3 px-8 rounded-sm transition"
-                data-testid="back-button"
-            >
-                Back To Categories
-            </button>
+            <div className="flex flex-col gap-4 justify-between items-center mb-4">
+                <h2 className="text-3xl text-white text-center">{category}</h2>
+                <button
+                    onClick={onBack}
+                    className="bg-white hover:bg-gray-100 text-pink-600 font-semibold py-3 px-8 rounded-sm transition"
+                    data-testid="back-button"
+                >
+                    Back To Categories
+                </button>
+                <div className="">
+                    <p className="text-white font-semibold">
+                        {availableOptions.length + 2} options remaining
+                    </p>
+                </div>
+            </div>
             <div className="flex flex-col md:flex-row gap-6 h-[60vh]">
                 <div 
                     className="flex-1 flex flex-col justify-center items-center h-full rounded-sm bg-rose-100 cursor-pointer hover:bg-rose-200 overflow-hidden group transition-all"
